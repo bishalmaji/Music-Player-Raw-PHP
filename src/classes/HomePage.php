@@ -49,6 +49,7 @@ class HomePage extends HomeDb
   public function uploadMusic()
   {
     if ($this->isUploadDone()) {
+
       return json_encode(["status" => "success", "message" => "Music Uploaded"]);
     } else {
       return json_encode(["status" => "fail", "message" => "Music Not uploaded"]);

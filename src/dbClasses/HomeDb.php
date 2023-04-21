@@ -43,7 +43,7 @@ class HomeDb extends DBConnector
    * @return boolean 
    * Returns ture is update is done successfully or false.
    */
-  protected function isUpdateDone($data)
+  protected function isUpdateDone(array $data)
   {
     $sql = "UPDATE user_table SET  email=?, interest=?, contact=? WHERE id=?";
     $param_uid = $this->getUserId();
@@ -84,7 +84,6 @@ class HomeDb extends DBConnector
     move_uploaded_file($audio_temp, $audio_destination);
     move_uploaded_file($img_temp, $img_destination);
 
-
     /* Step 1: prepare */
     $sql = "INSERT INTO music_table(audio, name,singer,genre,thumb,upload_by) VALUES (?, ?, ?, ?, ?,?)";
     $query = $this->connection->prepare($sql);
@@ -104,10 +103,7 @@ class HomeDb extends DBConnector
     $query->bindParam(5, $param_thumb, PDO::PARAM_STR);
     $query->bindParam(6, $param_upload_by, PDO::PARAM_INT);
 
-    /* 
-      * Step 3: execute: If upload succeeded,
-      * return ture or false.
-      */
+    //Step 3: execute: If upload succeeded,return ture or false.
     if ($query->execute()) {
       return true;
     } else {
@@ -132,19 +128,26 @@ class HomeDb extends DBConnector
     $data = $stmt->fetch();
     return $data['id'];
   }
-
-  //Returns true if music is added to favourite list
+  /**
+   * Adds music to favourite list.
+   * 
+   * @return  boolean
+   * Returs true if added to favourite list.
+   */
   public function isAddedToFav()
   {
     $sql = "INSERT INTO favourite_table(user_id, music_id) VALUES (?, ?)";
     $query = $this->connection->prepare($sql);
 
+    //Get or prepare the elements
     $param_fav_id = $_POST['id'];
     $param_user_id = $this->getUserId();
 
+    //Bind the element
     $query->bindParam(1, $param_user_id, PDO::PARAM_INT);
     $query->bindParam(2, $param_fav_id, PDO::PARAM_INT);
 
+    //execute
     if ($query->execute()) {
       return true;
     } else {

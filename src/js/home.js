@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   /**
    * This function is triggred when Profile Update button is clicked
@@ -37,11 +36,13 @@ $(document).ready(function () {
           if (response_arr["status"] == "success") {
             window.location = "/";
           } else {
-            // window.location = "/error.php";
+            window.location =
+              "../../src/views/error_dialog.php?message=profile not updated";
           }
         },
         error: function (xhr, status, error) {
           // window.location = "/error.php" ;
+          window.location = "../../src/views/error_dialog.php?message=" + xhr;
         },
       });
     }
@@ -54,11 +55,10 @@ $(document).ready(function () {
     setTimeout(function () {
       throw new Error(msg);
     }, 0);
-  };
+  }
 
- //called when add music button is clicked
+  //Called when add music button is clicked
   $("#add_music").click(function (event) {
-
     event.preventDefault();
     var formData = new FormData();
     audio = $('input[type="file"]')[0].files[0];
@@ -69,35 +69,35 @@ $(document).ready(function () {
     formData.append("genre", $("#genre").val());
     formData.append("audio", audio);
     formData.append("thumb", image);
-     console.log(formData);
+    console.log(formData);
     $.ajax({
-          url: "../../upload.php",
-          type: "POST",
-          dataType: "json",
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function (response) {
-            var response_arr = jQuery.parseJSON(response);
-            if (response_arr["status"] == "success") {
-              window.location = "/";
-            }else{
-              // window.location = "/error.php";
-            }
-  
-          },
-          error: function (xhr, status, error) {
-            // window.location = "/error.php" ;
-          },
-        });
- 
+      url: "../../upload.php",
+      type: "POST",
+      dataType: "json",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        var response_arr = jQuery.parseJSON(response);
+        if (response_arr["status"] == "success") {
+          window.location = "/";
+        } else {
+          window.location =
+            "../../src/views/error_dialog.php?message=" +
+            response_arr["message"];
+        }
+      },
+      error: function (xhr, status, error) {
+        window.location = "../../src/views/error_dialog.php?message=" + xhr;
+      },
+    });
   });
-  
+
   /**
    * This function is triggred when Logout button is clicked
    */
   $("#logout").click(function (event) {
- window.location = "../../logout.php";
+    window.location = "../../logout.php";
   });
 
   //Show error for 5 second, if any field is empty
@@ -133,43 +133,51 @@ $(document).ready(function () {
   }
 });
 
-
 /**
- * 
+ *
  * This functio Opens player_view.php with data given.
- * 
+ *
  * @param {*text} name contains name of audio
- * @param {*file} audio contains audio file 
+ * @param {*file} audio contains audio file
  * @param {*text} singer contains singer name of audio
  * @param {*text} genre contains genre of audio
  * @param {*file} cover contains thumnail fie of audio
- * 
+ *
  */
 function OpenPlayer(name, audio, singer, genre, cover) {
-  window.location = "../../src/views/player_view.php?name=" + name + "&audio=" + audio + "&singer=" + singer + "&genre=" + genre + "&thumb=" + cover;
+  window.location =
+    "../../src/views/player_view.php?name=" +
+    name +
+    "&audio=" +
+    audio +
+    "&singer=" +
+    singer +
+    "&genre=" +
+    genre +
+    "&thumb=" +
+    cover;
 }
 
 //Add music to user favourite list
-function AddToFavourite(id){
+function AddToFavourite(id) {
   $.ajax({
     url: "../../add_favourite.php",
     type: "POST",
     data: {
-      id:id
+      id: id,
     },
     dataType: "text",
     success: function (response) {
       var response_arr = jQuery.parseJSON(response);
       if (response_arr["status"] == "success") {
-        console.log("added to favourite");
         window.location = "/";
-      }else{
-        // window.location = "/error.php";
+      } else {
+        window.location =
+          "../../src/views/error_dialog.php?message=" + response_arr["message"];
       }
-
     },
     error: function (xhr, status, error) {
-      // window.location = "/error.php" ;
+      window.location = "../../src/views/error_dialog.php?message=" + xhr;
     },
   });
 }

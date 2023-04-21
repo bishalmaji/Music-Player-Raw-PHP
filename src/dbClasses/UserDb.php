@@ -30,7 +30,7 @@ class UserDb extends DBConnector
    * @return boolean
    * Returns ture on successful insertion.
    */
-  protected function insertUser($data)
+  protected function insertUser(array $data)
   {
     /* Step 1: prepare */
     $sql = "INSERT INTO user_table(name, email,contact,interest,password) VALUES (?, ?, ?, ?, ?)";
@@ -84,7 +84,6 @@ class UserDb extends DBConnector
    */
   public function isUserExist($email)
   {
-
     $sql_query = "SELECT email FROM user_table WHERE email =:mail";
     $stmt = $this->connection->prepare($sql_query);
     $stmt->execute(['mail' => $email]);

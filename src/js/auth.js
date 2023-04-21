@@ -41,11 +41,15 @@ $(document).ready(function () {
           if (response_arr["status"] == "success") {
             window.location = "/";
           } else {
-            // window.location = "/error";
+            window.location =
+              "../../src/views/error_dialog.php?message=" +
+              response_arr["message"];
           }
         },
 
-        error: function (xhr, status, error) {},
+        error: function (xhr, status, error) {
+          window.location = "../../src/views/error_dialog.php?message=" + xhr;
+        },
       });
     }
   });
@@ -83,15 +87,17 @@ $(document).ready(function () {
         dataType: "text",
         success: function (response) {
           var response_arr = jQuery.parseJSON(response);
-          console.log(response_arr);
+          
           if (response_arr["status"] == "success") {
-            window.location = "/";
+            window.location = "../../index.php"; 
           } else {
-            // window.location = "/error.php";
+            window.location =
+              "../../src/views/error_dialog.php?message=" +
+              response_arr["message"];
           }
         },
         error: function (xhr, status, error) {
-          // window.location = "/error.php" ;
+          window.location = "../../src/views/error_dialog.php?message=" + xhr;
         },
       });
     }

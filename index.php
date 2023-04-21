@@ -1,6 +1,6 @@
 <?php
 session_start();
-//navigate user to homepage if the user is already logged in.
+//Navigate user to homepage if the user is already logged in.
 if ($_SESSION['uid']) {
   header('Location: http://localhost/src/views/home_page.php');
   exit;

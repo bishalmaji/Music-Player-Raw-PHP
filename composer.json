@@ -1,0 +1,12 @@
+{
+  
+    "authors": [
+        {
+            "name": "bishal",
+            "email": "bishal.maji@innoraft.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}

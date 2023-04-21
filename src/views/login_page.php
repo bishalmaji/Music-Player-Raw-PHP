@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,9 @@
   <script src="../../src/js/auth.js"></script>
   <title>Login</title>
 </head>
+
 <body>
-  <?php include('../../src/views/component.login.php');?>
+  <?php include('../../src/views/component.login.php'); ?>
 </body>
+
 </html>

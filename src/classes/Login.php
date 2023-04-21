@@ -24,7 +24,7 @@ class Login extends UserDb
    */
   public function loginUser()
   {
-    if ($this->isUserExist($this->data['email']) && $this->isPasswordValid($this->data['email'],$this->data['password'])) {
+    if ($this->isUserExist($this->data['email']) && $this->isPasswordValid($this->data['email'], $this->data['password'])) {
       session_start();
       $_SESSION["uid"] = $this->data['email'];
       return json_encode(["status" => "success", "message" => "user exist"]);

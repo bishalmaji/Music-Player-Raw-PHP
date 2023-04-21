@@ -9,7 +9,6 @@ class EnvLoader
   protected $password;
   protected $env;
 
-
   protected function loadEnv()
   {
     $this->env = parse_ini_file("/var/www/html/raw_php_music_player/.env");

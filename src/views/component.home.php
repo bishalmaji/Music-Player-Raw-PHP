@@ -11,14 +11,13 @@
               <h2><?php echo $data['name'] ?? ''; ?></h2>
             </td>
             <td>
-              
+
             </td>
-          
+
             <td>
-              <button name="fav_Button" id="add_to_favourite" onclick="AddToFavourite('<?php echo $data['id'] ?>')" >Favourite</button>
+              <button name="fav_Button" id="add_to_favourite" onclick="AddToFavourite('<?php echo $data['id'] ?>')">Favourite</button>
             </td>
-            <td><img class="icon" onclick="OpenPlayer('<?php echo $data['name']; ?>','<?php echo $data['audio']; ?>','<?php echo $data['singer']; ?>','<?php echo $data['genre']; ?>','<?php echo $data['thumb']; ?>')"
-             src="../../src/uploads/icons/play_icon.png" alt="Play">
+            <td><img class="icon" onclick="OpenPlayer('<?php echo $data['name']; ?>','<?php echo $data['audio']; ?>','<?php echo $data['singer']; ?>','<?php echo $data['genre']; ?>','<?php echo $data['thumb']; ?>')" src="../../src/uploads/icons/play_icon.png" alt="Play">
             </td>
 
           </tr>

@@ -1,16 +1,18 @@
 <?php
-  $name = $_GET['name'];
-  $file_name = $_GET['audio'];
-  $singer = $_GET['singer'];
-  $genre = $_GET['genre'];
-  $cover = $_GET['thumb'];
-  $audio = "http://localhost/src/uploads/audio/$file_name";
-  ?>
+$name = $_GET['name'];
+$file_name = $_GET['audio'];
+$singer = $_GET['singer'];
+$genre = $_GET['genre'];
+$cover = $_GET['thumb'];
+$audio = "http://localhost/src/uploads/audio/$file_name";
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Player</title>
 </head>
+
 <body class="bg_green">
   <div class="container">
     <div class="box">

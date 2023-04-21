@@ -32,7 +32,7 @@ $(document).ready(function () {
           email: formDataArr["email"],
           password: formDataArr["password"],
           interest: formDataArr["interest"],
-          contact: formDataArr["contact"]
+          contact: formDataArr["contact"],
         },
         dataType: "text",
         success: function (response) {
@@ -40,14 +40,12 @@ $(document).ready(function () {
 
           if (response_arr["status"] == "success") {
             window.location = "/";
-          }else{
+          } else {
             // window.location = "/error";
           }
         },
 
-        error: function (xhr, status, error) {
-
-        },
+        error: function (xhr, status, error) {},
       });
     }
   });
@@ -88,10 +86,9 @@ $(document).ready(function () {
           console.log(response_arr);
           if (response_arr["status"] == "success") {
             window.location = "/";
-          }else{
+          } else {
             // window.location = "/error.php";
           }
-       
         },
         error: function (xhr, status, error) {
           // window.location = "/error.php" ;

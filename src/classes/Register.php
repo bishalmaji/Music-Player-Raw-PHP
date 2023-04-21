@@ -31,9 +31,8 @@ class Register extends UserDb
       } else {
         return json_encode(["status" => "fail", "message" => "User not Registred"]);
       }
-    }else{
+    } else {
       return json_encode(["status" => "fail", "message" => "User Already exist"]);
     }
-   
   }
 }
